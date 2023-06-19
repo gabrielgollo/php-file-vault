@@ -10,10 +10,10 @@ function checkLoginRedirect() {
     $registerPage = 'register.php';
     $isCurrentPageOneOfLoginPage = $currentPage === $loginPage || $currentPage === $registerPage;
     $authenticated = isAuthenticated();
-    if($authenticated && $isCurrentPageOneOfLoginPage) {
+    if($authenticated === true && $isCurrentPageOneOfLoginPage === true) {
         // User is already on the login page and logged in, redirect to index.php
         header("Location: index.php");
-        exit;
+        die();
     } elseif ($authenticated && !$isCurrentPageOneOfLoginPage) {
         // User is not logged in and is not on the login page, redirect to login.php
     } else if (!$authenticated && $isCurrentPageOneOfLoginPage) {
@@ -21,7 +21,7 @@ function checkLoginRedirect() {
     } else if (!$authenticated && !$isCurrentPageOneOfLoginPage) {
         // User is not logged in and is not on the login page, redirect to login.php
         header("Location: login.php");
-        exit;
+        die();
     }
 
 }

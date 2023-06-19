@@ -9,7 +9,6 @@ function checkLoginRedirect() {
     $loginPage = 'login.php';
     $registerPage = 'register.php';
     $isCurrentPageOneOfLoginPage = $currentPage === $loginPage || $currentPage === $registerPage;
-
     $authenticated = isAuthenticated();
     if($authenticated && $isCurrentPageOneOfLoginPage) {
         // User is already on the login page and logged in, redirect to index.php

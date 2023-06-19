@@ -8,23 +8,15 @@
         exit;
     }
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // echo "POST";
         if (!isset($_POST["email"]) || !isset($_POST["password"])) {
-            header("Location: login.php");
-            exit;
+            $warningBallon = '<div class="alert alert-warning" role="alert">
+            Email ou senha incorretos
+            </div>';
         }
         
         $email = $_POST["email"];
         $password = $_POST["password"];
     
-        // echo $email."<br>";
-        // echo $password;
-        if($email == '' || $password == '') {
-            // header("Location: login.php");
-            // exit;
-        }
-    
-        // require_once 'configs/config.global.php';
         require_once 'configs/banco.php';
     
         try {
@@ -38,18 +30,13 @@
     
         } catch (Exception $e) {
             echo 'Exceção capturada: ',  $e->getMessage(), "\n";
-            // REDIRECT TO LOGIN AND PASS ERROR
-            // header("Location: login.php");
-            // exit;
         }
     
         if($data) {
-            // session_destroy();
-            // session_start();
+            session_start();
             $_SESSION["userId"] = $data["userId"];
             $_SESSION["username"] = $data["username"];
             $_SESSION["email"] = $data["email"];
-            // $_SESSION["password"] = $data["password"];
             $_SESSION["logged_in"] = true;
             header("Location: index.php");
             exit;
@@ -58,7 +45,6 @@
             $warningBallon = '<div class="alert alert-warning" role="alert">
             ' . $errorMessage . '
             </div>';
-            // header("Location: login.php");
         }
     }
 ?>

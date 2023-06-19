@@ -39,7 +39,7 @@ try {
     // Display an error message
     echo "Error: " . $e->getMessage();
     // You can handle the error as per your requirements (e.g., logging, displaying a user-friendly error page)
-    exit;
+    exit();
 }
 
 ?>

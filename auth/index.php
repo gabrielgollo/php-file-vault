@@ -1,4 +1,4 @@
 <?php 
     // redirect to login page
-    header("Location: login.php");
+    header("location: login.php");
 ?>

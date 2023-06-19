@@ -46,8 +46,8 @@ if (isset($_GET['fileId'])) {
                 // File not found error
                 echo 'File not found.';
             }
-            header("Location: index.php");
-            exit;
+            header("location: index.php");
+            exit();
 
         } else {
             // Invalid fileId error
@@ -62,7 +62,7 @@ if (isset($_GET['fileId'])) {
     }
 } else {
     // fileId parameter is missing error
-    header('Location: index.php');
-    exit;    
+    header("location: index.php");
+    exit();    
 }
 ?>

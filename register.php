@@ -6,7 +6,7 @@
 <?php
 // Check the current page method
 if ($_SERVER['REQUEST_METHOD'] !== 'GET' && $_SERVER['REQUEST_METHOD'] !== 'POST') {
-    exit;
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -90,8 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Close the database connection
             Banco::desconectar();
             
-            header('Location: success.php');
-            exit;
+            header("location: success.php");
+            exit();
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
             echo 'Error: ' . $e->getMessage();

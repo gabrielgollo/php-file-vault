@@ -5,7 +5,7 @@
 <?php
     // check curect page method
     if ($_SERVER['REQUEST_METHOD'] !== 'GET' && $_SERVER['REQUEST_METHOD'] !== 'POST') {
-        exit;
+        exit();
     }
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!isset($_POST["email"]) || !isset($_POST["password"])) {
@@ -38,8 +38,8 @@
             $_SESSION["username"] = $data["username"];
             $_SESSION["email"] = $data["email"];
             $_SESSION["logged_in"] = true;
-            header("Location: index.php");
-            exit;
+            header("location: index.php");
+            exit();
         } else {
             $errorMessage = "Email ou senha incorretos";
             $warningBallon = '<div class="alert alert-warning" role="alert">

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Return the token to the client
     header('Content-Type: application/json');
     echo json_encode(['token' => $token]);
-    exit;
+    exit();
 }
 
 function generateToken($payload) {

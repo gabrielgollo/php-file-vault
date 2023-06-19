@@ -4,8 +4,8 @@ require_once 'configs/config.global.php';
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: index.php");
-    exit;
+    header("location: index.php");
+    exit();
 }
 ?>
 
@@ -73,8 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         // echo json_encode($response);
 
         // Redirect to index.php
-        header("Location: index.php");
-        exit;
+        header("location: index.php");
+        exit();
     } catch (PDOException $e) {
         // Display an error message
         echo "Error: " . $e->getMessage();

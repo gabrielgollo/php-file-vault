@@ -94,6 +94,7 @@ try {
                         <td><?php echo $file['createdAt']; ?></td>
                         <td>
                             <a href="download.php?fileId=<?php echo $file['fileId']; ?>" class="btn btn-primary">Download</a>
+                            <a href="delete.php?fileId=<?php echo $file['fileId']; ?>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

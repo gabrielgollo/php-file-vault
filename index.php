@@ -8,7 +8,6 @@ include './configs/banco.php';
 include './utils/table.php';
 include './utils/navbar.php';
 include './utils/container.php';
-include './utils/listFilesInDir.php';
 include './utils/fileUploadForm.php';
 
 
@@ -40,7 +39,7 @@ try {
     // Display an error message
     echo "Error: " . $e->getMessage();
     // You can handle the error as per your requirements (e.g., logging, displaying a user-friendly error page)
-    exit();
+    // exit();
 }
 
 ?>

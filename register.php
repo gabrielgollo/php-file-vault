@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $conn->commit();
 
             // Define the path where you want to create the folder
-            $basePath = 'uploads/' . $folderId . '/';
+            $basePath = './uploads/' . $folderId . '/';
 
             // Create the folder
             if (!file_exists($basePath)) {

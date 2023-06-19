@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$TITLE_GLOBAL = "FileVault";
+$APP_WEB_SITE = "FileVault";
 
 // Function to check if the user is logged in
 function checkLoggedIn() {
@@ -28,7 +28,7 @@ function checkLoginRedirect() {
     $currentPage = basename($_SERVER['PHP_SELF']);
     $loginPage = 'login.php';
     $registerPage = 'register.php';
-    if (($currentPage == $loginPage || $currentPage == $registerPage) && (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] === false)) {
+    if (($currentPage === $loginPage || $currentPage === $registerPage) && (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] === false)) {
         // User is already on the login page and logged in, no need to redirect
         return;
     }

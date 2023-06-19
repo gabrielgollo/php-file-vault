@@ -2,8 +2,6 @@
 require_once 'configs/config.global.php';
 ?>
 
-
-
 <?php
 // Check if the fileId query parameter is set
 if (isset($_GET['fileId'])) {
@@ -49,7 +47,7 @@ if (isset($_GET['fileId'])) {
                 echo 'File not found.';
             }
             header("Location: index.php");
-            exit();
+            exit;
 
         } else {
             // Invalid fileId error
@@ -65,6 +63,6 @@ if (isset($_GET['fileId'])) {
 } else {
     // fileId parameter is missing error
     header('Location: index.php');
-    exit();    
+    exit;    
 }
 ?>

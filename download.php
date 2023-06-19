@@ -41,7 +41,7 @@ if (isset($_GET['fileId'])) {
                 // Read the file and send it to the user
                 readfile($filePath);
                 header("Location: index.php");
-                exit();
+                exit;
             } else {
                 // File not found error
                 echo 'File not found.';
@@ -60,6 +60,6 @@ if (isset($_GET['fileId'])) {
 } else {
     // fileId parameter is missing error
     header('Location: index.php');
-    exit();    
+    exit;    
 }
 ?>

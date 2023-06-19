@@ -30,8 +30,6 @@ function isAuthenticated() {
     return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 }
 
-
-
 // Call the checkLoginRedirect function to handle user authentication and redirection
 checkLoginRedirect();
 ?>

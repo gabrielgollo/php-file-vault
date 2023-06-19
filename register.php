@@ -91,9 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Banco::desconectar();
             
             header('Location: success.php');
-            exit();
+            exit;
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
+            echo 'Error: ' . $e->getMessage();
         }
     }
 }

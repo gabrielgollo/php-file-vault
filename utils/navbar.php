@@ -16,6 +16,9 @@
                         <li class="nav-item ' . ($activePage == 'home' ? 'active' : '') . '">
                             <a class="nav-link" href="index.php">Home</a>
                         </li>
+                        <li class="nav-item ' . ($activePage == 'users' ? 'active' : '') . '">
+                            <a class="nav-link" href="users.php">Users</a>
+                        </li>
                         <li class="nav-item ' . ($activePage == 'about' ? 'active' : '') . '">
                             <a class="nav-link" href="about.php">About</a>
                         </li>

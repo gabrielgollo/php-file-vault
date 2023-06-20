@@ -1,12 +1,18 @@
 <?php
-// session_start();
+session_start();
 
-echo $_SESSION['logged_in'];
-echo $_SESSION['username'];
-// Define the title of the application
-
+if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    // User is already logged in, no need to redirect
+    echo $_SESSION['logged_in'];
+    echo $_SESSION['username'];
+    // Define the title of the application
+}
 
 $TITLE_GLOBAL = "FileVault";
+
+function isAuthenticated() {
+    return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
+}
 
 // Check if the user is already on the login page
 function checkLoginRedirect() {
@@ -31,9 +37,7 @@ function checkLoginRedirect() {
 
 }
 
-function isAuthenticated() {
-    return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
-}
+
 
 // Call the checkLoginRedirect function to handle user authentication and redirection
 checkLoginRedirect();

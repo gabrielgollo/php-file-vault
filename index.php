@@ -1,6 +1,5 @@
-
 <?php
-require_once 'configs/config.global.php';
+include_once './configs/configs.php';
 ?>
 
 <?php

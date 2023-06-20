@@ -1,5 +1,5 @@
 <?php 
-    include './configs/config.global.php';
+    include './configs/configs.php';
     include './configs/banco.php';
 ?>
 

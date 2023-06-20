@@ -92,8 +92,8 @@ try {
                         <td><?php echo $file['mimeType']; ?></td>
                         <td><?php echo $file['createdAt']; ?></td>
                         <td>
-                            <a href="download.php?fileId=<?php echo $file['fileId']; ?>" class="btn btn-primary">Download</a>
-                            <a href="delete.php?fileId=<?php echo $file['fileId']; ?>" class="btn btn-danger">Delete</a>
+                            <a href="#" class="btn btn-primary" onclick="downloadFile('<?php echo $file['fileId']."'".','."'".$file['fileName']."'"; ?>)">Download</a>
+                            <a href="#" class="btn btn-danger" onclick="deleteFile('<?php echo $file['fileId']; ?>'); return false;">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -103,8 +103,10 @@ try {
     
     <?php
     echo generateContainer($fileUploadForm);
-    ?>
 
+    
+    ?>
+    <script src='./assets/file.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

@@ -38,8 +38,11 @@ if (isset($_GET['fileId'])) {
                 header('Content-Disposition: attachment; filename="'.$fileName.'"');
                 header('Content-Length: ' . filesize($filePath));
 
-                // Read the file and send it to the user
+                // Write the file to the browser
                 readfile($filePath);
+
+                // Exit from the script
+                exit();
 
             } else {
                 // File not found error

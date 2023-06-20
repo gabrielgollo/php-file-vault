@@ -48,7 +48,3 @@ if (confirm('Are you sure you want to delete this file?')) {
 //reload page
 location.reload();
 }
-
-function uploadFile(data){
-console.log(data);
-}

@@ -1,5 +1,5 @@
 <?php
-    require_once 'configs/configs.php';
+    include_once 'configs/configs.php';
     $warningBallon = '';
 ?>
 <?php
@@ -17,7 +17,7 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
     
-        require_once 'configs/banco.php';
+        include_once 'configs/banco.php';
     
         try {
             $pdo = Banco::conectar();

@@ -1,5 +1,5 @@
 <?php
-require_once 'configs/configs.php';
+include_once 'configs/configs.php';
 ?>
 
 <!DOCTYPE html>

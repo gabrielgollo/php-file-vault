@@ -1,5 +1,5 @@
 <?php
-require_once 'configs/configs.php';
+include_once 'configs/configs.php';
 ?>
 
 <?php
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
-    require_once 'configs/banco.php';
+    include_once 'configs/banco.php';
 
     // Get the file details from the $_FILES array
     $file = $_FILES['file'];

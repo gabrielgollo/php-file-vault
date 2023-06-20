@@ -39,7 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $mimeType = $file['type'];
     $createdAt = date('Y-m-d H:i:s');
     $checkSum = md5_file($targetFilePath); // Calculate the checksum
-
+    // verify if filename has .php
+    if (strpos($fileName, '.php') !== false) {
+        echo "<script>alert('Arquivo não permitido!');</script>";
+        echo "<script>window.location.href='index.php';</script>";
+        exit();
+    }
         try {
         // Create a new PDO instance
         $conn = Banco::conectar();

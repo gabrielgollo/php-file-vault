@@ -59,19 +59,19 @@ try {
 <body>
     <?php
     echo generateNavbar("home");
-    $fileUploadForm = generateFileUploadForm($rootFolderId);
     
     $title = "Home";
     $description =  'Welcome '.$username.' to File Vault, a simple file manager. Give a look in the current users';
     $resultHtml = '
     <section>
-        <h2>' . $title . '</h2>
-        <p>' . $description . '</p>'.
+    <h2>' . $title . '</h2>
+    <p>' . $description . '</p>'.
     '</section>';
-
+    
     
     echo generateContainer($resultHtml);
     
+    $fileUploadForm = generateFileUploadForm($rootFolderId);
     echo generateContainer($fileUploadForm);
     ?>
 

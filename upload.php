@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
-    include_once 'configs/banco.php';
+    include 'configs/banco.php';
 
     // Get the file details from the $_FILES array
     $file = $_FILES['file'];
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $stmt->execute();
         
         // Close the database connection
-        $conn = null;
+        Banco::desconectar();
         
         // // Return the file details as the response
         // $response = array(
@@ -79,6 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         // Display an error message
         echo "Error: " . $e->getMessage();
         // You can handle the error as per your requirements (e.g., logging, displaying a user-friendly error message)
+        header('location: index.php');
+        exit();
     }
 }
 ?>

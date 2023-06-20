@@ -1,13 +1,6 @@
 <?php
 session_start();
 
-if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    // User is already logged in, no need to redirect
-    echo $_SESSION['logged_in'];
-    echo $_SESSION['username'];
-    // Define the title of the application
-}
-
 $TITLE_GLOBAL = "FileVault";
 
 function isAuthenticated() {

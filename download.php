@@ -35,13 +35,12 @@ if (isset($_GET['fileId'])) {
             if (file_exists($filePath)) {
                 // Set appropriate headers for file download
                 header('Content-Type: ' . $mimeType);
-                header('Content-Disposition: attachment; filename="' . $fileName . '"');
+                header('Content-Disposition: attachment; filename="'.$fileName.'"');
                 header('Content-Length: ' . filesize($filePath));
 
                 // Read the file and send it to the user
                 readfile($filePath);
-                header("location: index.php");
-                exit();
+
             } else {
                 // File not found error
                 echo 'File not found.';
@@ -53,6 +52,8 @@ if (isset($_GET['fileId'])) {
 
         // Close the database connection
         Banco::desconectar();
+        header("location: index.php");
+        exit();
     } catch (PDOException $e) {
         // Display an error message
         echo 'Error: ' . $e->getMessage();

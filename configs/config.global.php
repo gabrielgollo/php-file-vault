@@ -1,5 +1,10 @@
 <?php
-session_start();
+// session_start();
+
+echo $_SESSION['logged_in'];
+echo $_SESSION['username'];
+// Define the title of the application
+
 
 $TITLE_GLOBAL = "FileVault";
 
@@ -13,7 +18,7 @@ function checkLoginRedirect() {
     if($authenticated === true && $isCurrentPageOneOfLoginPage === true) {
         // User is already on the login page and logged in, redirect to index.php
         header("location: index.php");
-        die();
+        exit();
     } elseif ($authenticated && !$isCurrentPageOneOfLoginPage) {
         // User is not logged in and is not on the login page, redirect to login.php
     } else if (!$authenticated && $isCurrentPageOneOfLoginPage) {
@@ -21,7 +26,7 @@ function checkLoginRedirect() {
     } else if (!$authenticated && !$isCurrentPageOneOfLoginPage) {
         // User is not logged in and is not on the login page, redirect to login.php
         header("location: login.php");
-        die();
+        exit();
     }
 
 }

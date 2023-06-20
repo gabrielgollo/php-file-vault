@@ -20,7 +20,9 @@ try {
 
     // Get the user's root folderId (assuming the user is already authenticated)
     $userId = $_SESSION["userId"]; // Replace with the actual user's ID
-    $getUserRootFolderSQL = 'SELECT rootFolderId FROM USER WHERE userId = :userId';
+    $username = $_SESSION["username"];
+
+    $getUserRootFolderSQL = 'SELECT rootFolderId, userName FROM USER WHERE userId = :userId';
     $stmtUserRootFolder = $conn->prepare($getUserRootFolderSQL);
     $stmtUserRootFolder->bindParam(':userId', $userId);
     $stmtUserRootFolder->execute();
@@ -43,8 +45,6 @@ try {
 }
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +63,7 @@ try {
     $fileUploadForm = generateFileUploadForm($rootFolderId);
     
     $title = "Home";
-    $description =  'Welcome to File Vault, a simple file manager. Give a look in the current users';
+    $description =  'Welcome '.$username.' to File Vault, a simple file manager. Give a look in the current users';
     $resultHtml = '
     <section>
         <h2>' . $title . '</h2>

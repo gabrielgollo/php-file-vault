@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         // echo json_encode($response);
 
         // Redirect to index.php
-        header("location: index.php");
+        header("Location: index.php");
         exit();
     } catch (PDOException $e) {
         // Display an error message

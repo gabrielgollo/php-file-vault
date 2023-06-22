@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $folderId = $_POST['folderId']; // Replace with the actual folder ID
     
     // Define the upload directory
-    $uploadDir = 'uploads/' . $folderId . '/';
+    $uploadDir = '../uploads/' . $folderId . '/';
 
     // Create the directory if it doesn't exist
     if (!file_exists($uploadDir)) {

@@ -35,7 +35,7 @@ if (isset($_GET['fileId'])) {
             $folderId = $file['folderId'];
 
             // Generate the file path on the server
-            $filePath = "uploads/$folderId/$fileId";
+            $filePath = "../uploads/$folderId/$fileId";
             echo $filePath;
             // Check if the file exists on the server
             if (file_exists($filePath)) {

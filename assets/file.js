@@ -1,14 +1,14 @@
 async function downloadFile(fileId, filename) {
     try {
         const response = await fetch(`download.php?fileId=${fileId}`, {
-        method: "GET",
-        mode: "cors",
-        credentials: "include",
-        referrerPolicy: "strict-origin-when-cross-origin"
+            method: "GET",
+            mode: "cors",
+            credentials: "include",
+            referrerPolicy: "strict-origin-when-cross-origin"
         });
 
         if (!response.ok) {
-        throw new Error("File download failed");
+            throw new Error("File download failed");
         }
 
         const blob = await response.blob();
@@ -31,20 +31,35 @@ async function downloadFile(fileId, filename) {
 }
 
 function deleteFile(fileId) {
-if (confirm('Are you sure you want to delete this file?')) {
-    // Perform the deletion logic here
-    // You can use AJAX to send a request to the server for deleting the file
-    // For example:
-    fetch('delete.php?fileId=' + fileId, {
-        method: 'GET'
-    })
-    .then(response => {
-        // Handle the response if needed
-    })
-    .catch(error => {
-        console.log('An error occurred during file deletion:', error);
-    });
+    if (confirm('Are you sure you want to delete this file?')) {
+        // Perform the deletion logic here
+        // You can use AJAX to send a request to the server for deleting the file
+        // For example:
+        fetch('delete.php?fileId=' + fileId, {
+            method: 'GET'
+        })
+            .then(response => {
+                // Handle the response if needed
+            })
+            .catch(error => {
+                console.log('An error occurred during file deletion:', error);
+            });
+    }
+    //reload page
+    location.reload();
 }
-//reload page
-location.reload();
+
+function submitFolderForm(folderId) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'index.php';
+
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'folderId';
+    input.value = folderId;
+
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
 }

@@ -2,13 +2,12 @@
     function generateFileUploadForm($folderId)
     {
         $fileUploadForm = '
-        <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <form action="upload.php" method="POST" enctype="multipart/form-data" style="border:0px;" id="fileForm">
             <input type="hidden" name="folderId" value="' . $folderId . '">
             <div class="form-group">
-                <label for="file">Select File</label>
-                <input type="file" class="form-control-file" id="file" name="file">
+                <input type="file" class="form-control form-control-lg" id="file" name="file" onchange="()=>{document.querySelector("#fileForm").submit()}">
+                <button type="submit" class="btn btn-primary">Upload</button>
             </div>
-            <button type="submit" class="btn btn-primary">Upload</button>
         </form>';
     
         return $fileUploadForm;

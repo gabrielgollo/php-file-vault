@@ -141,6 +141,8 @@ try {
                 <div class="file">
                     <img src="<?php echo $icons['unknowFile']; ?>" alt="File Icon" class="icon" width="32" height="32">
                     <span><?php echo $file['fileName']; ?></span>
+                    <a href="#" class="btn btn-primary" onclick="downloadFile('<?php echo $file['fileId']."'".','."'".$file['fileName']."'"; ?>)">Download</a>
+                    <a href="#" class="btn btn-danger" onclick="deleteFile('<?php echo $file['fileId']; ?>'); return false;">Delete</a>
                 </div>
             <?php endforeach; ?>
         </div>

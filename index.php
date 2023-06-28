@@ -54,7 +54,7 @@ try {
     $folderContents = $files;
 
     // Close the database connection
-    $conn = null;
+    Banco::desconectar();
 } catch (PDOException $e) {
     // Display an error message
     echo "Error: " . $e->getMessage();
@@ -107,22 +107,28 @@ try {
 
     <div class="container">
         <?php
+            function showFolderNameAndBackButton(){
             if(isset($_POST['folderId'])){
                 $conn = Banco::conectar();
                 $folderId = $_POST['folderId'];
-                $getFolderNameSQL = 'SELECT parentFolderId, folderName FROM FOLDER WHERE folderId = :folderId';
+                $getFolderNameSQL = 'SELECT * FROM FOLDER WHERE folderId = :folderId';
                 $stmtFolderName = $conn->prepare($getFolderNameSQL);
                 $stmtFolderName->bindParam(':folderId', $folderId);
                 $stmtFolderName->execute();
-                $parentFolderId = $stmtFolderName->fetchColumn();
-                $folderName = $stmtFolderName->fetchColumn();
+                $data = $stmtFolderName->fetchColumn();
+                Banco::desconectar();
                 //back folder
-                echo '<div class="folder" onclick="submitFolderForm('.$parentFolderId.');" style="cursor: pointer;"><- Back</div>';
-                echo '<h2>Folder: '.$folderName.'</h2>';
-
+                echo '<div class="folder" onclick="submitFolderForm('.$data["parentFolderId"].');" style="cursor: pointer;"><- Back</div>';
+                echo '<h2>Folder: '.$data["folderName"].'</h2>';
+                // echo $data;
+                if(isset($data["parentFolderId"])) return 0;
             } else {
                 echo '<h1>Root Folder Contents</h1>';
+
             }
+            return 0;
+            } 
+            showFolderNameAndBackButton();
         ?>
         <form action="createFolder.php" method="POST" enctype="multipart/form-data" style="border:0px;" id="folderForm">
             <input type="hidden" name="folderId" value="<?php echo $currentFolderId; ?>">
@@ -134,6 +140,7 @@ try {
                 <div class="folder" onclick="submitFolderForm(<?php echo $folder['folderId']; ?>);" style="cursor: pointer;">
                 <img src="<?php echo $icons['folder']; ?>" alt="Folder Icon" class="icon" width="32" height="32">
                     <span><?php echo $folder['folderName']; ?></span>
+                    <a href="#" class="btn btn-danger" onclick="deleteFile('<?php echo $file['fileId']; ?>'); return false;">Delete</a>
                 </div>
             <?php endforeach; ?>
             </br>
